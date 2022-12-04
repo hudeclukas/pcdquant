@@ -27,6 +27,7 @@ public final class PythonProcess {
     private TCPServer server;
     private ProcessBuilder pb = null;
     private final boolean server_debug;
+    private boolean skip_detection = false;
 
     private PythonProcess() {
         this.server_debug = Constant.SERVER_DEBUG;
@@ -39,7 +40,15 @@ public final class PythonProcess {
             server = new TCPServer(Constant.SERVER_PORT, pb);
         }
     }
+
+    public void activateDetection() {
+        this.skip_detection = false;
+    }
     
+    public void deactivateDetection() {
+        this.skip_detection = true;
+    }
+
     /**
      * Retrieves the Python process instance, or creates if it doesn't exist yet
      * @return an instance of this class
@@ -169,9 +178,13 @@ public final class PythonProcess {
     public ArrayList<PcdPoint> getPoints(String imgPath) throws IOException {
         if (server_debug) {
             return _getPoints_debug();
-        } else {
-            return _getPoints(imgPath);
+        } 
+        if (skip_detection) {
+            ArrayList<PcdPoint> debugPoints = new ArrayList<>();
+            return debugPoints;
         }
+        
+        return _getPoints(imgPath);
     }
 
     /**
@@ -205,7 +218,12 @@ public final class PythonProcess {
             try {
                 PcdPoint point1 = new PcdPoint();
                 String[] data = point.split(",");
-                point1.setType(Short.parseShort(data[2]));
+                short classType = Short.parseShort(data[2]);
+                if (Constant.ONLY_NORMAL && classType != 0) {
+                    LOGGER.info(String.format("Point not used: class %d", classType));
+                    continue;
+                }
+                point1.setType(classType);
                 point1.setX(Integer.parseInt(data[0]));
                 point1.setY(Integer.parseInt(data[1]));
                 point1.setScore(Double.parseDouble(data[3]));

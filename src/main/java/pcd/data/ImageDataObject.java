@@ -287,7 +287,7 @@ public class ImageDataObject implements Serializable {
      * used as points
      */
     public void initializeOverlay(ArrayList<Integer> typeIdentifierList, ArrayList<String> typeIconList) {
-        if (pointList != null && pointList.size() <= 400 && pointList.size() > 0) {
+        if (pointList != null && pointList.size() <= 400) {
             layer = new PointOverlay(pointList, typeIconList, typeIdentifierList);
             initialized = true;
         }

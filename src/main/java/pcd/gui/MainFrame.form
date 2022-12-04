@@ -187,7 +187,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="mainPanel" alignment="0" pref="698" max="32767" attributes="0"/>
+          <Component id="mainPanel" alignment="0" pref="729" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -207,7 +207,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -219,9 +219,11 @@
                               <Component id="jScrollPane4" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="selectAllLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="skipDetectionLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -275,6 +277,7 @@
                       <Component id="zoomOutButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="selectAllLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="angleCalcButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="skipDetectionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -313,7 +316,7 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="exportMergeButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="interactionPanel" pref="651" max="32767" attributes="0"/>
+                      <Component id="interactionPanel" pref="685" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
@@ -835,6 +838,15 @@
             <Property name="text" type="java.lang.String" value="Std. Angle: 0"/>
             <Property name="name" type="java.lang.String" value="angleStd" noResource="true"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="skipDetectionLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Skip Detection"/>
+            <Property name="name" type="java.lang.String" value="skipDetectionLabel" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="skipDetectionLabelActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

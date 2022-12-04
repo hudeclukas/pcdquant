@@ -308,6 +308,7 @@ public final class MainFrame extends javax.swing.JFrame {
         angleCalcButton = new javax.swing.JButton();
         angleAverage = new javax.swing.JLabel();
         angleStd = new javax.swing.JLabel();
+        skipDetectionLabel = new javax.swing.JCheckBox();
         mainBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         newProjectMenuItem = new javax.swing.JMenuItem();
@@ -676,12 +677,20 @@ public final class MainFrame extends javax.swing.JFrame {
         angleStd.setText("Std. Angle: 0");
         angleStd.setName("angleStd"); // NOI18N
 
+        skipDetectionLabel.setText("Skip Detection");
+        skipDetectionLabel.setName("skipDetectionLabel"); // NOI18N
+        skipDetectionLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipDetectionLabelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -692,7 +701,9 @@ public final class MainFrame extends javax.swing.JFrame {
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(selectAllLabel)))
+                        .addComponent(selectAllLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(skipDetectionLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
@@ -736,7 +747,8 @@ public final class MainFrame extends javax.swing.JFrame {
                     .addComponent(zoomInButton)
                     .addComponent(zoomOutButton)
                     .addComponent(selectAllLabel)
-                    .addComponent(angleCalcButton))
+                    .addComponent(angleCalcButton)
+                    .addComponent(skipDetectionLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
@@ -769,7 +781,7 @@ public final class MainFrame extends javax.swing.JFrame {
                         .addComponent(exportAllButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(exportMergeButton))
-                    .addComponent(interactionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE))
+                    .addComponent(interactionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 685, Short.MAX_VALUE))
                 .addGap(5, 5, 5))
         );
 
@@ -878,7 +890,7 @@ public final class MainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(1382, 760));
@@ -1302,6 +1314,11 @@ public final class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_chooseLangMenuItemActionPerformed
 
+    private void skipDetectionLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipDetectionLabelActionPerformed
+        boolean skip = skipDetectionLabel.isSelected();
+        this.imgDataStorage.skipDetection(skip);
+    }//GEN-LAST:event_skipDetectionLabelActionPerformed
+
     // Select file
     /**
      * When a file is selected it highlights it and shows the picture.
@@ -1400,6 +1417,7 @@ public final class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem saveItem;
     private javax.swing.JLabel secRateLabel;
     private javax.swing.JCheckBox selectAllLabel;
+    private javax.swing.JCheckBox skipDetectionLabel;
     private javax.swing.JTable tagCountTable;
     private javax.swing.JTable tagTable;
     private javax.swing.JButton zoomInButton;

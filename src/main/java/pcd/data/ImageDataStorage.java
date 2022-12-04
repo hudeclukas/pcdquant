@@ -123,6 +123,14 @@ public class ImageDataStorage {
         return typeIdentifierList;
     }
 
+    public void skipDetection(boolean skip) {
+        if (skip) {
+            pyproc.deactivateDetection();
+        } else {
+            pyproc.activateDetection();
+        }
+    }
+
     /**
      * Stops the python process
      */
@@ -746,7 +754,7 @@ public class ImageDataStorage {
             LOGGER.info("Progress: " + (i + 1) + "/" + pointlistList.size());
             initImage(idxList.get(i), pointlistList.get(i));
         }
-
+        
         parentFrame.resetSelection();
         parentFrame.loadTables();
     }
